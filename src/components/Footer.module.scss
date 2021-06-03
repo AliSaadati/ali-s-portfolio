@@ -1,0 +1,196 @@
+/**** Mixins ****/
+@mixin small-mobile-view {
+    @media (max-width: 374px) {
+        @content;
+    }
+}
+
+@mixin mobile-view {
+    @media (max-width: 699px) {
+        @content;
+    }
+}
+
+@mixin tablet-view {
+    @media (min-width: 700px) {
+        @content;
+    }
+}
+
+
+@mixin desktop-view {
+    @media (min-width: 1000px) {
+        @content;
+    }
+}
+
+.footerHorizontalLine {
+    width: calc(100% - 3rem);
+    height: 1px;
+    background-color: #666;
+    margin: 0 auto;
+    max-width: 1200px;
+
+}
+
+.footer {
+    display: flex;
+    flex-direction: column;
+
+    justify-content: space-between;
+    max-width: 1200px;
+    margin: 0 auto;
+    font-family: 'montserrat';
+    padding: 1rem 0;
+    padding-top: 0rem;
+
+    @include tablet-view() {
+        flex-direction: row;
+        padding-top: 1rem;
+    }
+
+    .logoFlex {
+
+        display: flex;
+        align-items: center;
+        padding: .5rem;
+        padding-left: 1.5rem;
+        flex-direction: column;
+
+        @include tablet-view() {
+            flex-direction: row;
+            align-items: left;
+        }
+        .logoContainer {
+
+            margin: 1.5rem auto 0;
+            display: flex;
+            align-items: center;
+
+            @include tablet-view() {
+
+                margin: 0 .5rem 0 0;
+
+            }
+
+            .logo {
+
+                height: 3rem;
+
+            }
+        }
+
+        .logoEmail {
+            font-size: .8rem;
+            font-weight: 700;
+            // display: none;
+            font-family: 'montserrat';
+            padding: .5rem 0rem 0rem;
+            @include tablet-view() {
+                display: inline-block;
+                padding: 0rem;
+            }
+        }
+    }
+
+    .iconFlex {
+
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        @include tablet-view() {
+            flex-direction: row;
+        }
+
+
+        .mediaIcons {
+
+            margin: .5rem .5rem calc(.5rem - 2px);
+            display: flex;
+            align-items: center;
+
+            button {
+                border: none;
+                padding: 0;
+                margin:0;
+                background-color: transparent;
+            }
+
+
+            .mediaIcon {
+                padding: 0 .25rem;
+                border-radius: 3px;
+            }
+
+            .codepenIcon {
+                background-color: black;
+                border-radius: 2.5px;
+                // height: 1.03rem;
+                // width: 1rem;
+                padding: 0.15rem;
+                margin: 0 .35rem 2px .35rem;
+                transform: translateY(1px);
+                height: 24px;
+                @include tablet-view() {
+                    height: 23px;
+
+                }
+            }
+
+            .resumeButton {
+
+                margin-left: .5rem;
+                padding: 0.75rem .8rem .75rem 1rem;
+                background-color: black;
+                color: white;
+                border: none;
+                border-radius: 3px;
+                font-family: "montserrat";
+                font-weight: 500;
+                display: inline-flex;
+                cursor: pointer;
+                text-decoration: none;
+
+                span {
+                    font-size: 1rem;
+                    line-height: 1rem;
+                }
+
+                .downloadIcon {
+                    padding-left: .25rem;
+                    display: inline;
+                    fill: white;
+                }
+
+                &:hover {
+                    color: white;
+                    background-color: #707070;
+                    background-color: black;
+                    border-color: black;
+                    transition: .1s ease-out;
+
+                    .downloadIcon {
+                        fill: #ffaa56;
+                    }
+
+                }
+            }
+        }
+
+    }
+
+    .bottomEmail {
+        font-size: .8rem;
+        font-weight: 600;
+        display: block;
+        font-family: 'montserrat';
+        text-align: center;
+        margin: .5rem .5rem 2rem;
+        display: none;
+
+        @include tablet-view() {
+            display: none;
+        }
+    }
+}

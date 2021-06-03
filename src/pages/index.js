@@ -1,184 +1,175 @@
-import * as React from "react"
 
-// styles
-const pageStyles = {
-  color: "#232129",
-  padding: 96,
-  fontFamily: "-apple-system, Roboto, sans-serif, serif",
-}
-const headingStyles = {
-  marginTop: 0,
-  marginBottom: 64,
-  maxWidth: 320,
-}
-const headingAccentStyles = {
-  color: "#663399",
-}
-const paragraphStyles = {
-  marginBottom: 48,
-}
-const codeStyles = {
-  color: "#8A6534",
-  padding: 4,
-  backgroundColor: "#FFF4DB",
-  fontSize: "1.25rem",
-  borderRadius: 4,
-}
-const listStyles = {
-  marginBottom: 96,
-  paddingLeft: 0,
-}
-const listItemStyles = {
-  fontWeight: 300,
-  fontSize: 24,
-  maxWidth: 560,
-  marginBottom: 30,
-}
 
-const linkStyle = {
-  color: "#8954A8",
-  fontWeight: "bold",
-  fontSize: 16,
-  verticalAlign: "5%",
-}
+import React, { useState, useCallback, useEffect } from 'react'
+import { Link, graphql, useStaticQuery } from 'gatsby'
+import * as classes from '../stylesheets/styles.module.scss';
+import AboutCard from '../components/AboutCard';
+import Toolbar from '../components/Toolbar';
+import ContactForm from '../components/ContactForm';
+import Footer from '../components/Footer';
+import ProjectCard from '../components/ProjectCard';
+import ProjectIcons from '../components/ProjectIcons';
 
-const docLinkStyle = {
-  ...linkStyle,
-  listStyleType: "none",
-  marginBottom: 24,
-}
+import { GrReactjs } from 'react-icons/gr'
+import { IoLogoNodejs } from 'react-icons/io'
+import { FaDatabase } from 'react-icons/fa'
+import { FaAws } from 'react-icons/fa'
+import { SiGatsby } from 'react-icons/si'
 
-const descriptionStyle = {
-  color: "#232129",
-  fontSize: 14,
-  marginTop: 10,
-  marginBottom: 0,
-  lineHeight: 1.25,
-}
 
-const docLink = {
-  text: "Documentation",
-  url: "https://www.gatsbyjs.com/docs/",
-  color: "#8954A8",
-}
 
-const badgeStyle = {
-  color: "#fff",
-  backgroundColor: "#088413",
-  border: "1px solid #088413",
-  fontSize: 11,
-  fontWeight: "bold",
-  letterSpacing: 1,
-  borderRadius: 4,
-  padding: "4px 6px",
-  display: "inline-block",
-  position: "relative",
-  top: -2,
-  marginLeft: 10,
-  lineHeight: 1,
-}
+const About = () => {
 
-// data
-const links = [
-  {
-    text: "Tutorial",
-    url: "https://www.gatsbyjs.com/docs/tutorial/",
-    description:
-      "A great place to get started if you're new to web development. Designed to guide you through setting up your first Gatsby site.",
-    color: "#E95800",
-  },
-  {
-    text: "How to Guides",
-    url: "https://www.gatsbyjs.com/docs/how-to/",
-    description:
-      "Practical step-by-step guides to help you achieve a specific goal. Most useful when you're trying to get something done.",
-    color: "#1099A8",
-  },
-  {
-    text: "Reference Guides",
-    url: "https://www.gatsbyjs.com/docs/reference/",
-    description:
-      "Nitty-gritty technical descriptions of how Gatsby works. Most useful when you need detailed information about Gatsby's APIs.",
-    color: "#BC027F",
-  },
-  {
-    text: "Conceptual Guides",
-    url: "https://www.gatsbyjs.com/docs/conceptual/",
-    description:
-      "Big-picture explanations of higher-level Gatsby concepts. Most useful for building understanding of a particular topic.",
-    color: "#0D96F2",
-  },
-  {
-    text: "Plugin Library",
-    url: "https://www.gatsbyjs.com/plugins",
-    description:
-      "Add functionality and customize your Gatsby site or app with thousands of plugins built by our amazing developer community.",
-    color: "#8EB814",
-  },
-  {
-    text: "Build and Host",
-    url: "https://www.gatsbyjs.com/cloud",
-    badge: true,
-    description:
-      "Now you’re ready to show the world! Give your Gatsby site superpowers: Build and host on Gatsby Cloud. Get started for free!",
-    color: "#663399",
-  },
-]
+    let [imagesLoaded, setImagesLoaded] = useState(0);
 
-// markup
-const IndexPage = () => {
-  return (
-    <main style={pageStyles}>
-      <title>Home Page</title>
-      <h1 style={headingStyles}>
-        Congratulations
-        <br />
-        <span style={headingAccentStyles}>— you just made a Gatsby site! </span>
-        <span role="img" aria-label="Party popper emojis">
-          🎉🎉🎉
-        </span>
-      </h1>
-      <p style={paragraphStyles}>
-        Edit <code style={codeStyles}>src/pages/index.js</code> to see this page
-        update in real-time.{" "}
-        <span role="img" aria-label="Sunglasses smiley emoji">
-          😎
-        </span>
-      </p>
-      <ul style={listStyles}>
-        <li style={docLinkStyle}>
-          <a
-            style={linkStyle}
-            href={`${docLink.url}?utm_source=starter&utm_medium=start-page&utm_campaign=minimal-starter`}
-          >
-            {docLink.text}
-          </a>
-        </li>
-        {links.map(link => (
-          <li key={link.url} style={{ ...listItemStyles, color: link.color }}>
-            <span>
-              <a
-                style={linkStyle}
-                href={`${link.url}?utm_source=starter&utm_medium=start-page&utm_campaign=minimal-starter`}
-              >
-                {link.text}
-              </a>
-              {link.badge && (
-                <span style={badgeStyle} aria-label="New Badge">
-                  NEW!
-                </span>
-              )}
-              <p style={descriptionStyle}>{link.description}</p>
-            </span>
-          </li>
-        ))}
-      </ul>
-      <img
-        alt="Gatsby G Logo"
-        src="data:image/svg+xml,%3Csvg width='24' height='24' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M12 2a10 10 0 110 20 10 10 0 010-20zm0 2c-3.73 0-6.86 2.55-7.75 6L14 19.75c3.45-.89 6-4.02 6-7.75h-5.25v1.5h3.45a6.37 6.37 0 01-3.89 4.44L6.06 9.69C7 7.31 9.3 5.63 12 5.63c2.13 0 4 1.04 5.18 2.65l1.23-1.06A7.959 7.959 0 0012 4zm-8 8a8 8 0 008 8c.04 0 .09 0-8-8z' fill='%23639'/%3E%3C/svg%3E"
-      />
-    </main>
-  )
+    let [windowWidth, setWindowWidth] = useState(window.innerWidth)
+
+    let setScreenWidthListener = useCallback(() => {
+        window.addEventListener('resize', () => setWindowWidth(window.innerWidth))
+    })
+
+    let removeScreenWidthListener = useCallback(() => {
+        window.removeEventListener('resize', () => setWindowWidth(window.innerWidth))
+    })
+
+    useEffect(() => {
+        setScreenWidthListener()
+        return () => removeScreenWidthListener()
+    }, [])
+
+    let hero = null;
+
+    if (windowWidth > 699) {
+        hero = (
+            <div className={classes.heroFlex}>
+                <div className={`${classes.heroFlexCol} ${classes.heroTitleCol}`}>
+                    <h1 className={classes.title}>San Diego based web designer and developer</h1>
+                    <p className={classes.subTitle}>Crafting effective and engaging web apps and websites</p>
+                    <button className={classes.bigButton}>Let's Connect!</button>
+                </div>
+                <div className={`${classes.heroFlexCol} ${classes.heroImageCol}`}>
+                    <img className={classes.heroImage} src="/static/images/hero-profile-image-ali.png" alt="Profile - Ali Saadati" />
+                </div>
+            </div>
+        )
+    }
+    else if (windowWidth < 700) {
+        hero = (
+            <div className={classes.heroFlex}>
+                <div className={classes.heroFlexCol}>
+                    <h1 className={classes.title}>San Diego based web designer and developer</h1>
+                    <p className={classes.subTitle}>Crafting effective and engaging web apps and websites</p>
+                    <img className={classes.heroImage} src="/static/images/hero-profile-image-ali.png" alt="Profile - Ali Saadati" />
+                    <button className={classes.bigButton}>Let's Connect!</button>
+                </div>
+
+            </div>
+        )
+    }
+
+    let dbApiProjIcons = (
+        <ul className={classes.projIconList}>
+            <li><span className={classes.skill}>
+                <GrReactjs className={`${classes.iconR} ${classes.icon}`} />React
+                    </span></li>
+            <li><span className={classes.skill}>
+                <IoLogoNodejs className={`${classes.iconN} ${classes.icon}`} />NodeJs
+                    </span></li>
+            <li><span className={classes.skill}>
+                <FaAws className={`${classes.iconA} ${classes.icon}`} />AWS</span></li>
+            <li><span className={classes.skill}>
+                <FaDatabase className={`${classes.iconD} ${classes.icon}`} />MySQL</span></li>
+        </ul>
+    ),
+        ccProjIcons = (
+            <ul className={classes.projIconList}>
+                <li><span className={classes.skill}>
+                    <GrReactjs className={`${classes.iconR} ${classes.icon}`} />React
+            </span></li>
+                <li><span className={classes.skill}>
+                    <IoLogoNodejs className={`${classes.iconN} ${classes.icon}`} />NodeJs
+            </span></li>
+                <li><span className={classes.skill}>
+                    <FaAws className={`${classes.iconA} ${classes.icon}`} />AWS</span></li>
+                <li><span className={classes.skill}>
+                    <FaDatabase className={`${classes.iconD} ${classes.icon}`} />NoSQL</span></li>
+            </ul>
+        )
+
+    let cards = (
+        <>
+            <ProjectCard
+                title="Database/API Plug & Report"
+                description="A white label database reporting system that easily connects to an API or MySQL Database and allows users to generate reports on a scheduled basis."
+                projectDetailsUrl="/projects/PlugAndPlayDatabase"
+                gitHubUrl="https://www.github.com/alisaadati"
+                liveLink=""
+                setImagesLoaded={setImagesLoaded}
+                imagesLoaded={imagesLoaded}
+                imageFileName="db-card-image.png"
+                imageAlt="Database, API Plug and Report Web Application"
+            >
+                {dbApiProjIcons}
+            </ProjectCard>
+            <ProjectCard
+                title="Camille's Cakery"
+                description="Multipage website designed and developed for local pastry/dessert business."
+                projectDetailsUrl="/projects/CamillesCakery"
+                gitHubUrl="https://www.github.com/alisaadati"
+                liveLink="http://camilles-cakery-web-app.s3-website-us-west-1.amazonaws.com/"
+                setImagesLoaded={setImagesLoaded}
+                imagesLoaded={imagesLoaded}
+                imageFileName="camilles-cakery-card.png"
+                imageShadow={true}
+                imageAlt="Camille's Cakery"
+            >
+                {ccProjIcons}
+            </ProjectCard>
+
+
+        </>
+    )
+
+    return (
+        <>
+            <Toolbar />
+            <main className={classes.main}>
+                <section className={classes.hero}>
+                    <div className={classes.heroBackground}></div>
+                    <div className={classes.heroContainer}>
+                        {hero}
+                    </div>
+                </section>
+                <section id="Projects" className={classes.projects}>
+                    <div className={classes.horizontalLine} />
+                    <h2>Projects</h2>
+                    <div className={classes.horizontalLine} />
+
+                    {cards}
+                </section>
+                <section id="About" className={classes.about}>
+                    <div className={classes.horizontalLine} />
+                    <h2>About Me</h2>
+                    <div className={classes.horizontalLine} />
+
+                    <div className={classes.aboutCards} >
+                        <AboutCard imageSource={"/static/images/logos/sdsu-logo.png"} imageAlt={"San Diego State University Logo"} year="2016">In December of 2016 I received a Bachelor of Science in Computer Science from San Diego State University.</AboutCard>
+                        <AboutCard imageSource={"/static/images/logos/m-logo.png"} imageAlt={"Mitchell International Logo"} year="2017">in 2017 I began working as a software development engineer at Mitchell International where I was responsible for developing and maintaining custom test frameworks used company wide. Some of the key learning points of the position were coding best practices, deployment CI/CD, automation, test driven development, architecture design, and team management and organization.</AboutCard>
+                        <AboutCard imageSource={"/static/images/logos/as-logo.png"} imageAlt={"Ali Saadati Logo"} year="2019">In 2019 I began working as a freelance developer, focusing on single page applications and multipage websites with particular attention to responsive design. During this time I’ve acquired a variety of soft skills and broad technical expertise including business negotiation, customer relations, </AboutCard>
+                        <AboutCard imageSource={"/static/images/logos/as-logo.png"} imageAlt={"AS Logo"} year="2021">Open to full time front-end / full stack employment opportunities. Contact me at Saadati.Ali619@gmail.com or shoot me a message below.</AboutCard>
+                    </div>
+                </section>
+                <section id="Contact" className={classes.contact}>
+                    <div className={classes.horizontalLine} />
+                    <h2>Contact</h2>
+                    <div className={classes.horizontalLine} />
+
+                    <ContactForm />
+                </section>
+            </main>
+            <Footer />
+        </>
+    )
 }
 
-export default IndexPage
+export default About;

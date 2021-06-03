@@ -1,0 +1,194 @@
+/**** Mixins ****/
+@mixin small-mobile-view {
+    @media (max-width: 374px) {
+        @content;
+    }
+}
+
+@mixin mobile-view {
+    @media (min-width: 375px) {
+        @content;
+    }
+}
+
+@mixin tablet-view {
+    @media (min-width: 700px) {
+        @content;
+    }
+}
+
+
+@mixin desktop-view {
+    @media (min-width: 1000px) {
+        @content;
+    }
+}
+
+.aboutRowFlex {
+
+    display: flex;
+
+    .timelineFlex {
+
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        .topScroll {
+            border-radius: 0 0 4px 4px;
+        }
+
+        .bottomScroll {
+            border-radius: 4px 4px 0 0;
+        }
+
+        .topScroll,
+        .bottomScroll {
+
+            width: 4px;
+            flex-grow: 1;
+            height: 0px;
+
+            .timelineScrollUnfilled {
+
+                stroke-dashoffset: 100;
+                stroke-dasharray: 100;
+                height: 100%;
+                stroke-width: 16px;
+                stroke: #014589;
+                // transition: 1s ease-in-out;
+            }
+
+            .timelineScrollFilled {
+                height: 100%;
+                stroke-width: 16px;
+                stroke: #003a730d;
+            }
+        }
+
+        .yearDot {
+
+            height: 3rem;
+            width: 3rem;
+
+            border-radius: 5rem;
+            background: linear-gradient(180deg, #fac5c5, #ffdfc0);
+            margin: 1rem .5rem;
+            transition: .5s;
+
+            @include mobile-view() {
+                margin: 1rem 1rem;
+            }
+
+            @include tablet-view() {
+                margin: 1rem clamp(2rem, 8vw, 4rem);
+                height: 4rem;
+                width: 4rem;
+                transition: .5s;
+            }
+
+            @include desktop-view() {
+                margin: 1rem clamp(2rem, 8vw, 8rem);
+                height: 5rem;
+                width: 5rem;
+                transition: .5s;
+            }
+
+            span {
+                line-height: 3rem;
+                font-weight: 600;
+                color: #014589;
+                text-align: center;
+                display: block;
+                transform: .5s;
+                font-size: 1rem;
+
+                @include tablet-view() {
+                    line-height: 4rem;
+                    font-size: 1.2rem;
+
+                }
+
+                @include desktop-view() {
+                    line-height: 5rem;
+
+                }
+            }
+        }
+    }
+
+    .aboutCard {
+        background-color: white;
+        border-radius: 5px;
+        // filter: drop-shadow(2px 2px 5px #0002);
+        padding: 0rem 1rem 2rem;
+        margin: 1rem 1rem 1rem 0rem;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        font-size: .8rem;
+        font-weight: 500;
+        box-shadow: 2px 2px 10px #0003;
+        @include tablet-view() {
+            margin: 1rem clamp(2rem, 8vw, 4rem) 1rem 0rem;
+            padding: 2rem;
+            font-size: 1rem;
+            font-weight: 400;
+
+
+        }
+
+        @include desktop-view() {
+            padding: 3rem 4rem;
+            margin: 1rem clamp(2rem, 8vw, 4rem) 1rem 0rem;
+            width: 60%;
+            max-width: 40rem;
+            flex-direction: row;
+
+        }
+
+        -webkit-transform: translateX(200px) translateZ(0);
+        transform: translateX(200px) translateZ(0);
+        opacity: 0;
+
+        .aboutCardArrow {
+            position: absolute;
+            left: -5px;
+            top: 50%;
+            border-right: 5px solid white;
+            border-top: 5px solid transparent;
+            border-bottom: 5px solid transparent;
+            transform: translateY(-50%);
+
+            @include tablet-view() {
+                left: -20px;
+                border-right: 20px solid white;
+                border-top: 20px solid transparent;
+                border-bottom: 20px solid transparent;
+            }
+        }
+
+        .aboutCardImageContainer {
+
+
+            img {
+                width: 4rem;
+                height: auto;
+                @include tablet-view() {
+                    width: 5rem;
+                }
+            }
+
+            @include desktop-view() {
+                padding-right: 4rem;
+
+            }
+        }
+
+        .aboutCardDesription {
+            line-height: 1.7;
+            overflow-wrap: break-word;
+            margin: 0;
+        }
+    }
+}

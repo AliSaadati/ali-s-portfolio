@@ -1,0 +1,236 @@
+/**** Mixins ****/
+@mixin small-mobile-view {
+    @media (max-width: 374px) {
+        @content;
+    }
+}
+
+@mixin mobile-view {
+    @media (min-width: 375px) {
+        @content;
+    }
+}
+
+@mixin tablet-view {
+    @media (min-width: 700px) {
+        @content;
+    }
+}
+
+
+@mixin desktop-view {
+    @media (min-width: 1000px) {
+        @content;
+    }
+}
+
+
+.toolbar {
+    height: 6rem;
+    background-color: white;
+    color: #707070;
+    display: flex;
+    align-items: center;
+
+    max-width: calc(1200px - 4rem);
+    margin: 0 auto;
+    padding: 0rem 1rem;
+    justify-content: space-between;
+
+    position: relative;
+
+    @include tablet-view() {
+        padding: 0rem 2rem;
+
+    }
+
+    .titleContainer {
+        display: flex;
+        align-items: center;
+        z-index: 20;
+
+        margin-left: clamp(0rem, calc(40vw - 20rem), 8rem);
+
+        .logoContainer {
+            margin-right: .5rem;
+
+            .logo {
+                height: 4.2rem;
+                vertical-align: middle;
+            }
+        }
+
+        .title {
+            font-family: 'montserrat';
+            font-weight: 600;
+            font-size: 1.2rem;
+            white-space: nowrap;
+        }
+
+    }
+
+    .nav {
+        height: 100%;
+        align-items: center;
+        overflow: hidden;
+
+        @include tablet-view() {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+        }
+
+        ul {
+            @include tablet-view() {
+                height: 100%;
+            }
+
+            margin: 0;
+        }
+
+        .navItem {
+            cursor: pointer;
+
+            @include tablet-view() {
+                &:after {
+
+                    content: "";
+                    background-color: #d26800;
+                    height: 2px;
+                    position: absolute;
+                    bottom: 0px;
+                    left: -.5rem;
+                    width: 0%;
+                    transition: width .15s ease-out;
+                }
+
+                &:hover {
+                    color: #000;
+
+                    &:after {
+                        width: calc(100% + 1rem);
+                        transition: width .25s ease-out;
+                    }
+                }
+
+
+            }
+        }
+
+        .downloadItem {
+            height: auto;
+        }
+
+        li {
+            font-family: 'montserrat';
+            font-weight: 500;
+            font-size: 1rem;
+            list-style: none;
+            display: inline-block;
+            height: 100%;
+            position: relative;
+
+            @include tablet-view() {
+                margin-right: 2rem;
+                height: 6rem;
+
+            }
+
+            &:last-of-type {
+                margin-right: 0rem;
+
+                @include tablet-view() {
+                    padding-right: .5rem;
+
+                }
+            }
+
+            &:nth-of-type(3),
+            &:nth-of-type(2) {
+                @include tablet-view() {
+                    margin-right: 1.5rem;
+                }
+            }
+
+            a {
+                text-decoration: none;
+                color: black;
+
+
+                @include tablet-view() {
+                    line-height: 6rem;
+                    display: inline-block;
+                    color: inherit;
+
+                }
+
+            }
+
+
+            .resumeButton {
+
+                padding: 0.75rem .8rem .75rem 1rem;
+                background-color: white;
+                color: #707070;
+                border: 2px solid #707070;
+                border-radius: 3px;
+                font-family: "montserrat";
+                font-weight: 500;
+                display: inline-flex;
+                cursor: pointer;
+
+                span {
+                    font-size: 1rem;
+                    line-height: 1rem;
+                }
+
+                .downloadIcon {
+                    padding-left: .25rem;
+                    display: inline;
+                }
+
+                &:hover {
+                    color: white;
+                    background-color: #707070;
+                    background-color: black;
+                    border-color: black;
+                    transition: .1s ease-out;
+
+                    .downloadIcon {
+                        fill: #ffaa56;
+                    }
+
+                }
+            }
+        }
+    }
+
+    .hamburgerIcon {}
+
+    .sideNav {
+        position: absolute;
+        right: 0;
+        z-index: 10;
+        height: 100%;
+        background-color: white;
+
+        .sideNavItem {
+            font-family: 'montserrat';
+            font-weight: 500;
+            font-size: 1rem;
+            list-style: none;
+            display: block;
+        }
+    }
+}
+
+
+.show {
+    transform: translateX(100%);
+    transition: .3s;
+}
+
+.hide {
+    transform: translateX(50%);
+    transition: .3s;
+}

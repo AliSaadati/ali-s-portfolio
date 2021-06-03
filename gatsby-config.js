@@ -1,6 +1,7 @@
 module.exports = {
   siteMetadata: {
-    title: "Ali's Portfolio",
+    title: "Ali Saadati | Web Design and Development",
+    author: "Ali Saadati"
   },
   plugins: [
     "gatsby-plugin-sass",
@@ -8,7 +9,7 @@ module.exports = {
     {
       resolve: "gatsby-plugin-google-analytics",
       options: {
-        trackingId: "",
+        trackingId: "1",
       },
     },
     {

@@ -1,0 +1,63 @@
+.ContactForm {
+
+    padding: 3rem 2rem 2rem;
+    position: relative;
+    max-width: 900px;
+    margin: 0 auto;
+
+    p {
+        margin: 0;
+        position: relative;
+    }
+
+    label {
+        padding: .3rem 0.3rem .3rem .5rem;
+        width: 4.2rem;
+        display: block;
+        font-weight: 700;
+        z-index: 20;
+        font-size: 0.8rem;
+        margin: .4rem 0 -.1rem 0;
+        background: linear-gradient(90deg, #FCB36B, #FC9B9B);
+        box-shadow: 3px 0px 0px #9995;
+    }
+
+    input,
+    textarea {
+        width: 100%;
+        box-sizing: border-box;
+        margin: 0;
+        padding: .5rem;
+        border: 1px solid #ddd;
+        border-radius: 3px;
+        box-shadow: 3px 3px 12px #aaa8;
+        font-family: 'Montserrat';
+        font-size: 1rem;
+        -webkit-appearance: none;
+
+    }
+
+    textarea {
+        height: 8rem;
+    }
+
+    button {
+        border: none;
+        display: block;
+        margin: 2rem 0px auto auto;
+        border-radius: 30px;
+        font-family: "montserrat";
+        font-weight: 700;
+        font-size: 14px;
+        padding: 0.75rem 2rem;
+        background: var(--project-button-gradient);
+        color: white;
+        height: 3rem;
+
+        &:hover {
+            cursor: pointer;
+            background: var(--project-button-hover-gradient);
+
+        }
+    }
+}

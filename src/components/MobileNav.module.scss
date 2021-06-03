@@ -1,0 +1,192 @@
+.MobileNavContainer {
+    position: absolute;
+    // height: 100%;
+    right: 0;
+    left: 0;
+    z-index: 10;
+    background-color: white;
+
+    a {
+        color: black;
+    }
+}
+
+.resumeButton {
+
+    padding: 0.5rem .8rem .5rem 1rem;
+    color: white;
+    background-color: black;
+    border: 2px solid black;
+    border-radius: 3px;
+    font-family: "montserrat";
+    font-weight: 500;
+    display: inline-flex;
+    cursor: pointer;
+    span {
+        font-size: 1rem;
+    }
+
+    .downloadIcon {
+        padding-left: .25rem;
+        display: inline;
+        fill: #ffaa56;    
+    }
+
+    &:hover {
+
+        transition: .1s ease-out;
+    }
+}
+
+.bottomBorders {
+
+    background-color: #EBF4F4;
+    // height: 1rem;
+    position: relative;
+
+    &:before {
+        background-color: #FFA454;
+
+        // height: 1rem;
+        content: "";
+        width: 100%;
+        position: absolute;
+        top: .75rem;
+    }
+
+    &:after {
+        background-color: #D06800;
+
+        // height: 1rem;
+        content: "";
+        position: absolute;
+        width: 100%;
+        top: 1.5rem;
+    }
+}
+
+.show .bottomBorders {
+    height: .75rem;
+    // transition: height linear .07s .5s;
+    transition: background-color ease-out .2s .2s;
+
+    &:before {
+        height: .75rem;
+        // transition: height linear .07s .57s;
+        transition: background-color ease-out .2s .25s;
+    }
+
+    &:after {
+        height: .75rem;
+        // transition: height linear .07s .64s;
+        transition: background-color ease-in .2s .3s;
+    }
+}
+
+.hide .bottomBorders {
+    background-color: white;
+    height: 0rem;
+    transition: background-color .2s, height .1s .5s;
+
+    &:before {
+        background-color: white;
+        height: 0rem;
+        transition: background-color .2s, height .1s .5s;
+    }
+
+    &:after {
+        background-color: white;
+        height: 0rem;
+        transition: background-color .2s, height .1s .5s;
+    }
+}
+
+.mobileNavMenu {
+    margin: 0;
+    padding: 2rem 0 4rem;
+    list-style: none;
+    background-color: white;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+}
+
+
+.mobileNavItem {
+    a {
+        text-decoration: none;
+        color: inherit;
+    }
+    font-weight: 500;
+    padding: .75rem 0;
+}
+
+.show .mobileNavItem {
+
+    opacity: 1;
+    transform: translateY(0%);
+    display: block;
+
+    &:nth-of-type(1) {
+        transition: opacity .4s .25s, transform .4s .25s;
+    }
+
+    &:nth-of-type(2) {
+        transition: opacity .4s .2s, transform .4s .2s;
+    }
+
+    &:nth-of-type(3) {
+        transition: opacity .4s .15s, transform .4s .15s;
+    }
+
+    &:nth-of-type(4) {
+        transition: opacity .4s .25s, transform .4s .05s;
+    }
+
+}
+
+.hide .mobileNavItem {
+
+    opacity: 0;
+    transform: translateY(-100%);
+
+    &:nth-of-type(1) {
+        transition: opacity .1s .05s, transform .4s;
+    }
+
+    &:nth-of-type(2) {
+        transition: opacity .1s .05s, transform .4s;
+    }
+
+    &:nth-of-type(3) {
+        transition: opacity .1s .05s, transform .4s;
+    }
+
+    &:nth-of-type(4) {
+        transition: opacity .1s .05s, transform .4s;
+    }
+}
+
+.show {
+    opacity: 1;
+    transform: translateY(0%);
+    transition: opacity .3s, transform .3s;
+}
+
+.hide {
+    opacity: 0;
+    transform: translateY(-300%);
+    transition: opacity .3s .25s, transform .3s .15s;
+    animation: hide .4s normal forwards;
+
+}
+
+@keyframes hide {
+    99% {
+        visibility: visible;
+    }
+
+    100% {
+        visibility: hidden;
+    }
+}
