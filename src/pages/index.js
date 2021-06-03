@@ -20,16 +20,19 @@ import { SiGatsby } from 'react-icons/si'
 
 const About = () => {
 
+    const isBrowser = typeof window !== "undefined"
+    let browserWindowWidth = isBrowser ? window.innerWidth : 0;
+    
     let [imagesLoaded, setImagesLoaded] = useState(0);
 
-    let [windowWidth, setWindowWidth] = useState(window.innerWidth)
+    let [windowWidth, setWindowWidth] = useState(browserWindowWidth)
 
     let setScreenWidthListener = useCallback(() => {
-        window.addEventListener('resize', () => setWindowWidth(window.innerWidth))
+        window.addEventListener('resize', () => setWindowWidth(browserWindowWidth))
     })
 
     let removeScreenWidthListener = useCallback(() => {
-        window.removeEventListener('resize', () => setWindowWidth(window.innerWidth))
+        window.removeEventListener('resize', () => setWindowWidth(browserWindowWidth))
     })
 
     useEffect(() => {

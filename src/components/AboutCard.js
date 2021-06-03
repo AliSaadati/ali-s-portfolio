@@ -4,10 +4,14 @@ import * as classes from './AboutCard.module.scss';
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger.js";
 
+
 gsap.registerPlugin(ScrollTrigger);
 
 const AboutCard = (props) => {
-    ScrollTrigger.refresh();
+
+    const isBrowser = typeof window !== "undefined"
+    if (isBrowser) 
+        ScrollTrigger.refresh();
 
     let topScrollRef = useRef();
     let topTimelineScrollUnfilledRef = useRef();

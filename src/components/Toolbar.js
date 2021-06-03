@@ -9,20 +9,24 @@ import ResumeFile from '../../public/static/files/5-26-2021 Resume Ali Saadati.p
 
 const Toolbar = (props) => {
 
-    let [windowWidth, setWindowWidth] = useState(window.innerWidth);
+
+    const isBrowser = typeof window !== "undefined"
+    let browserWindowWidth = isBrowser ? window.innerWidth : 0;
+
+    let [windowWidth, setWindowWidth] = useState(browserWindowWidth);
     let [showMobileNav, setShowMobileNav] = useState(false);
 
     let setScreenWidthListener = useCallback(() => {
         window.addEventListener('resize', () => {
-            setWindowWidth(window.innerWidth)
-            if (window.innerWidth > 699) {
+            setWindowWidth(browserWindowWidth)
+            if (browserWindowWidth > 699) {
                 // Close side menu
             }
         })
     })
 
     let removeScreenWidthListener = useCallback(() => {
-        window.removeEventListener('resize', () => setWindowWidth(window.innerWidth))
+        window.removeEventListener('resize', () => setWindowWidth(browserWindowWidth))
     })
 
     useEffect(() => {

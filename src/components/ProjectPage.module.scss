@@ -70,9 +70,9 @@
 
         @include tablet-view() {
             padding-left: 2rem;
-            margin-left: clamp(calc(max(calc((100% - 1200px) / 2), 0px)),
-                    calc(max(calc((100% - 1200px) / 2), 0px) + (40vw - 20rem)),
-                    calc(max(calc((100% - 1200px) / 2), 0px) + 8rem));
+            margin-left: clamp(max(calc((100% - 1200px) / 2), 0px),
+                    max(calc((100% - 1200px) / 2), 0px) + (40vw - 20rem),
+                    max(calc((100% - 1200px) / 2), 0px) + 8rem);
         }
 
         .heroImage {
@@ -101,13 +101,13 @@
         @include tablet-view() {
             padding: 0 2rem;
 
-            margin-left: clamp(calc(max(calc((100% - 1200px) / 2), 0px)),
-                    calc(max(calc((100% - 1200px) / 2), 0px) + (40vw - 20rem)),
-                    calc(max(calc((100% - 1200px) / 2), 0px) + 8rem));
+            margin-left: clamp(max(calc((100% - 1200px) / 2), 0px),
+                    max(calc((100% - 1200px) / 2), 0px) + (40vw - 20rem),
+                    max(calc((100% - 1200px) / 2), 0px) + 8rem);
 
-            margin-right: clamp(calc(max(calc((100% - 1200px) / 2), 0px)),
-            calc(max(calc((100% - 1200px) / 2), 0px) + (40vw - 20rem)),
-            calc(max(calc((100% - 1200px) / 2), 0px) + 8rem));
+            margin-right: clamp(max(calc((100% - 1200px) / 2), 0px),
+            max(calc((100% - 1200px) / 2), 0px) + (40vw - 20rem),
+            max(calc((100% - 1200px) / 2), 0px) + 8rem);
         }
 
         p {
