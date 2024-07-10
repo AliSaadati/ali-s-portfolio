@@ -11,8 +11,7 @@ const CamillesCakery = (props) => {
                 imageSource="/static/images/camilles-cakery-card.png"
                 imageShadow={true}
                 imageAlt="Camille's Cakery Website Screenshot"
-                externalLink="http://camilles-cakery-web-app.s3-website-us-west-1.amazonaws.com/"
-                gitHubLink="https://www.github.com/alisaadati"
+                externalLink="http://www.camillescakery.com/"
                 introP="Camille’s Cakery is a local cake & dessert shop which specializes in customer themed party packages for various occasions."
                 storyP="Covid-19 has drastically changed the way businesses seek to connect and engage with their customer. Many business owners have been forced to adapt to a new distanced approach to conducting business. The charm of Camille’s Cakery was all but lost when they were forced to put face to face interactions on hold. A challenge faced was to recreate a similar experience to the traditional consultation, through a digital platform."
                 goalP="To provide customer an elegant website to showcase base products, educate customer on custom package ordering, allow customers to provide feedback and to provide a platform where  customers can share their experience with others."

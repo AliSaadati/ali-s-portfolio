@@ -51,7 +51,7 @@ const ProjectCard = (props) => {
                     <div className={classes.buttonFlex}>
                         <a href={props.projectDetailsUrl} className={` ${classes.moreDetailsLink} ${classes.button}`}>More Details</a>
                         <div className={classes.additionalLinks}>
-                            <a href={classes.gitHubUrl} className={` ${classes.gitHubLink} ${classes.button}`}><FaGithub /></a>
+                            {props.gitHubUrl ? <a href={props.gitHubUrl} className={` ${classes.gitHubLink} ${classes.button}`}><FaGithub /></a> : null}
                             <a href={props.liveLink} className={` ${classes.liveLink} ${classes.button}`}><HiExternalLink /></a>
                         </div>
                     </div>

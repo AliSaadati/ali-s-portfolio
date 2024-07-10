@@ -1,7 +1,6 @@
 
 
 import React, { useState, useCallback, useEffect } from 'react'
-import { Link, graphql, useStaticQuery } from 'gatsby'
 import * as classes from '../stylesheets/styles.module.scss';
 import AboutCard from '../components/AboutCard';
 import Toolbar from '../components/Toolbar';
@@ -105,8 +104,8 @@ const About = () => {
                 title="Database/API Plug & Report"
                 description="A white label database reporting system that easily connects to an API or MySQL Database and allows users to generate reports on a scheduled basis."
                 projectDetailsUrl="/projects/PlugAndPlayDatabase"
-                gitHubUrl="https://www.github.com/alisaadati"
-                liveLink=""
+                gitHubUrl="https://www.github.com/alisaadati/PlugAndPlay-v2"
+                liveLink="https://d3sef6omsv7cgi.cloudfront.net/"
                 setImagesLoaded={setImagesLoaded}
                 imagesLoaded={imagesLoaded}
                 imageFileName="db-card-image.png"
@@ -118,8 +117,7 @@ const About = () => {
                 title="Camille's Cakery"
                 description="Multipage website designed and developed for local pastry/dessert business."
                 projectDetailsUrl="/projects/CamillesCakery"
-                gitHubUrl="https://www.github.com/alisaadati"
-                liveLink="http://camilles-cakery-web-app.s3-website-us-west-1.amazonaws.com/"
+                liveLink="http://www.camillescakery.com/"
                 setImagesLoaded={setImagesLoaded}
                 imagesLoaded={imagesLoaded}
                 imageFileName="camilles-cakery-card.png"
@@ -159,7 +157,8 @@ const About = () => {
                         <AboutCard imageSource={"/static/images/logos/sdsu-logo.png"} imageAlt={"San Diego State University Logo"} year="2016">In December of 2016 I received a Bachelor of Science in Computer Science from San Diego State University.</AboutCard>
                         <AboutCard imageSource={"/static/images/logos/m-logo.png"} imageAlt={"Mitchell International Logo"} year="2017">in 2017 I began working as a software development engineer at Mitchell International where I was responsible for developing and maintaining custom test frameworks used company wide. Some of the key learning points of the position were coding best practices, deployment CI/CD, automation, test driven development, architecture design, and team management and organization.</AboutCard>
                         <AboutCard imageSource={"/static/images/logos/as-logo.png"} imageAlt={"Ali Saadati Logo"} year="2019">In 2019 I began working as a freelance developer, focusing on single page applications and multipage websites with particular attention to responsive design. During this time I’ve acquired a variety of soft skills and broad technical expertise including business negotiation, customer relations, </AboutCard>
-                        <AboutCard imageSource={"/static/images/logos/as-logo.png"} imageAlt={"AS Logo"} year="2021">Open to full time front-end / full stack employment opportunities. Contact me at Saadati.Ali619@gmail.com or shoot me a message below.</AboutCard>
+                        <AboutCard imageSource={"/static/images/logos/lion-logo.png"} imageAlt={"AS Logo"} year="2021">In 2021 I began working as a Full Stack Developer at Lion Interactive. Here I was responsible for various applications and projects that ranged from web development to mobile app development.</AboutCard>
+                        <AboutCard imageSource={"/static/images/logos/as-logo.png"} imageAlt={"AS Logo"} year="2024">Open to full time software devlopment/engineering employment opportunities. Contact me at Saadati.Ali619@gmail.com or shoot me a message below.</AboutCard>
                     </div>
                 </section>
                 <section id="Contact" className={classes.contact}>
