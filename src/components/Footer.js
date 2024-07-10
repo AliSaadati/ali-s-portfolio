@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect } from 'react';
+import { Link } from "gatsby";
 
 import * as classes from './Footer.module.scss';
 
@@ -14,7 +15,6 @@ const Footer = (props) => {
 
     return (
         <>
-            <div className={classes.footerHorizontalLine} />
             <footer className={classes.footer} >
                 <div className={classes.logoFlex}>
                     <div className={classes.logoContainer}>
@@ -24,10 +24,10 @@ const Footer = (props) => {
                 </div>
                 <div className={classes.iconFlex}>
                     <div className={classes.mediaIcons}>
-                        <a className={classes.mediaButton}><FaEnvelopeSquare size="2rem" className={classes.mediaIcon} /></a>
-                        <a className={classes.mediaButton}><FaGithubSquare size="2rem" className={classes.mediaIcon} /></a>
-                        <a className={classes.mediaButton}><FiCodepen size="1.5rem" color="white" className={`${classes.mediaIcon} ${classes.codepenIcon}`} /></a>
-                        <a className={classes.mediaButton}><FaLinkedin size="2rem" className={classes.mediaIcon} /></a>
+                        <a className={classes.mediaButton} href="mailto:Saadati.Ali619@gmail.com"><FaEnvelopeSquare size="2rem" className={classes.mediaIcon} /></a>
+                        <a className={classes.mediaButton} href="https://www.github.com/AliSaadati"><FaGithubSquare size="2rem" className={classes.mediaIcon} /></a>
+                        {/* <a className={classes.mediaButton} href=""><FiCodepen size="1.5rem" color="white" className={`${classes.mediaIcon} ${classes.codepenIcon}`} /></a> */}
+                        <a className={classes.mediaButton} href="http://www.linkedin.com/in/alisaadati"><FaLinkedin size="2rem" className={classes.mediaIcon} /></a>
                         <a href={ResumeFile} download="Ali-Saadati-Resume.pdf" className={classes.resumeButton}>
                         <span>Resume</span> <IoMdDownload className={classes.downloadIcon} size="1rem" />
                     </a>

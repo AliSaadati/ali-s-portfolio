@@ -11,12 +11,12 @@ const PlugAndPlayDatabase = (props) => {
                 imageSource="/static/images/db-card-image.png"
                 imageShadow={false}
                 imageAlt="Plug and Play Database Reporting Web App Screenshot"
-                externalLink="http://camilles-cakery-web-app.s3-website-us-west-1.amazonaws.com/"
-                gitHubLink="https://www.github.com/alisaadati"
+                externalLink="http://plug-and-play-db.s3-website-us-west-1.amazonaws.com/"
+                gitHubLink="https://www.github.com/alisaadati/PlugAndPlay"
                 introP="This Project was developed as a lightweight, web accessible alternative to traditional data reporting software."
                 storyP="As a developer, my aim is to provide a highly customizable white label database reporting web application that can be easily integrated into existing systems. The web application is currently capable of  reporting using MySQL and DynamoDB databases. Additional features and support for additional databases is currently being worked on."
                 goalP="To allow users to create, store, and manipulate custom database queries through a clean, intuitive, responsive web application. The UX is designed for a user base that need not have extensive knowledge in using databases and writing database queries. Additionally, the ability to configure scheduled report generation and automated report delivery was introduced as an additional feature."
-                techP="The front end is written using **React** with custom and **React-Bootstrap** components. The back end is **NodeJs** and **Express**. The application is hosted on an **Nginx** server using **PM2** for app management and monitoring. The database types currently suported are **MySQL** and **AWS DynamoDB**."
+                techP="The front end is written using **React** and **Material-UI**. The back end runs on **AWS Lambda** and **API Gateway** using **NodeJs**. The application is hosted on **AWS S3**, and database is **PostgreSQL** - (also supports **MySQL**)."
                 ></ProjectPage>
         </Layout>
     )
